@@ -1,0 +1,57 @@
+import java.util.*;
+import java.io.*;
+import java.util.ArrayList;
+ 
+public class Main {
+   
+    public static void main(String[] args) throws IOException {
+    	String[] ar0 = {"0", "8"};
+    	String[] ar1 = {"1", "2", "4"};
+    	String[] ar2 = {"1", "2", "3", "5"};
+        String[] ar3 = {"2", "3", "6"};
+        String[] ar4 = {"1", "4", "5", "7"};
+        String[] ar5 = {"2", "4", "5", "6", "8"};
+        String[] ar6 = {"3", "5", "6", "9"};
+        String[] ar7 = {"4", "7", "8"};
+        String[] ar8 = {"0", "5", "7", "8", "9"};
+        String[] ar9 = {"6", "8", "9"};     
+      // String[][] arrD = {ar0, ar1, ar2, ar3, ar4, ar5, ar6, ar7, ar8, ar9};
+        
+        ArrayList<String> list = new ArrayList<String>(8); //лист от 1 до 8 элементов
+        List<String> list1 =  Arrays.asList("0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+        ArrayList<String> list2 = new ArrayList<String>(); //лист дл€ записи полученных значений
+        
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));      
+        String s ="";
+          while (true) {
+              s = reader.readLine();        	 
+              list.add(s);
+        	  if (!s.equals("null")) {
+        		  break;
+        	  }       	  
+          }
+                          
+        for (int с = 0; с < list.size(); с++) { //¬ывод в консоль исходного пин-кода
+        System.out.println("»сходный пин-код: " + list.get(с));
+        } 
+                     
+        //–аботает дл€ одной €чейки без цикла внешнего (который предполагаетс€ дл€ 8 €чеек):
+      //for (int y = 0; y < list.size(); y++) {    //с этим внешним циклом нихрена не работает                
+         int y = 1;  //номер €чейки 1 (т.е. ar1 = {"1", "2", "4"};)       
+        String yStr ="1"; 
+       	      for (int i = 0; i < list1.size(); i++) {  	     //проходит список значений от "0" до "9"
+       		    if (yStr == list1.get(i)) {	            //сравнивает значени€ списка со значени€ми в моей €чейке 1 
+       		    	for (int z = 0; z < ar1.length; z++) {    //цикл по значени€м  {"1", "2", "4"}
+       		    	     String sum = ar1[z];                                         
+       			        list2.add(sum);
+           		     }	       
+       	            }     		    		
+              }
+        //}
+       	 
+        //вывод итогового списка в консоль:
+         for (int k = 0; k < list2.size(); k++) {
+             System.out.print(list2.get(k) + ", ");
+             }	  
+    }
+}
